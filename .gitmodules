@@ -1,0 +1,3 @@
+[submodule "lib/mtar"]
+	path = lib/mtar
+	url = https://github.com/amachronic/microtar.git
