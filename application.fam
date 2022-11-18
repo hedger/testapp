@@ -2,7 +2,7 @@
 
 App(
     appid="demo_app",  # Must be unique
-    name="App demo_app",  # Displayed in UI
+    name="app demo_app",  # Displayed in UI
     apptype=FlipperAppType.EXTERNAL,
     entry_point="demo_app_app",
     stack_size=2 * 1024,
