@@ -3,8 +3,17 @@ on: [push]
 jobs:
   test_ubt_build_action:
     runs-on: ubuntu-latest
-    name: ufbt build
+    strategy:
+      matrix:
+        include:
+          - name: 'Build for dev channel'
+            ufbt-version: 'prerelease'
+            sdk-channel: 'dev'
+          - name: 'Build for release'
+            ufbt-version: 'prerelease'
+            sdk-channel: 'rc'
 
+    name: "ufbt: ${{ matrix.name }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -13,12 +22,12 @@ jobs:
         uses: hedger/flipperzero-ufbt-action@dev
         id: build-app
         with:
-          use-ufbt-version: 'prerelease'
-          sdk-channel: 'dev'
+          ufbt-version: ${{ matrix.ufbt-version }}
+          sdk-channel: ${{ matrix.sdk-channel }}
 
       - name: Upload app artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: application
+          name: fap-${{ steps.build-app.outputs.suffix }}
           path: ${{ steps.build-app.outputs.fap-artifacts }}
 
