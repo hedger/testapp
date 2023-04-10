@@ -1,0 +1,32 @@
+on: [push]
+
+name: Build and lint 
+
+jobs:
+  test_ubt_build_action:
+    runs-on: ubuntu-latest
+    name: ufbt: Build for Dev branch
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build with ufbt
+        uses: hedger/flipperzero-ufbt-action@dev
+        id: build-app
+        with:
+          ufbt-version: prerelease
+          sdk-channel: dev
+
+      - name: Upload app artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: fap-${{ steps.build-app.outputs.suffix }}
+          path: ${{ steps.build-app.outputs.fap-artifacts }}
+
+      # You can remove this step if you don't need to lint sources
+      - name: Lint sources
+        uses: hedger/flipperzero-ufbt-action@dev
+        id: lint-sources
+        with:
+          skip-setup: true
+          task: lint

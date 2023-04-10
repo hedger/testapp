@@ -1,20 +1,22 @@
 on: [push]
 
+name: Build for multiple SDK sources
+
 jobs:
   test_ubt_build_action:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
-          - name: 'Build for dev channel'
-            sdk-channel: 'dev'
-          - name: 'Build for release'
-            sdk-channel: 'rc'
-          - name: 'Build for Unleashed'
-            sdk-channel: 'dev'
+          - name: dev channel
+            sdk-channel: dev
+          - name: release channel
+            sdk-channel: rc
+          - name: Unleashed
+            sdk-channel: dev
             sdk-index-url: https://up.unleashedflip.com/directory.json
 
-    name: "ufbt: ${{ matrix.name }}"
+    name: ufbt: Build for ${{ matrix.name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,7 +25,7 @@ jobs:
         uses: hedger/flipperzero-ufbt-action@dev
         id: build-app
         with:
-          ufbt-version: 'prerelease'
+          ufbt-version: prerelease
           sdk-channel: ${{ matrix.sdk-channel }}
           sdk-index-url: ${{ matrix.sdk-index-url }}
 
@@ -32,4 +34,3 @@ jobs:
         with:
           name: fap-${{ steps.build-app.outputs.suffix }}
           path: ${{ steps.build-app.outputs.fap-artifacts }}
-
