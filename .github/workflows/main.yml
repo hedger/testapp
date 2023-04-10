@@ -11,6 +11,7 @@ jobs:
 
       - name: Build with ufbt
         uses: hedger/flipperzero-ufbt-action@v1a
+        id: build-app
         with:
           use-ufbt-version: 'prerelease'
           sdk-channel: 'dev'
@@ -20,3 +21,4 @@ jobs:
         with:
           name: application
           path: ${{ steps.build-app.outputs.fap-artifacts }}
+
