@@ -15,7 +15,7 @@ jobs:
           - name: 'Build for Unleashed'
             ufbt-version: 'prerelease'
             sdk-channel: 'dev'
-            index-url: https://up.unleashedflip.com/directory.json
+            sdk-index-url: https://up.unleashedflip.com/directory.json
 
     name: "ufbt: ${{ matrix.name }}"
     steps:
