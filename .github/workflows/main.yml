@@ -12,6 +12,10 @@ jobs:
           - name: 'Build for release'
             ufbt-version: 'prerelease'
             sdk-channel: 'rc'
+          - name: 'Build for Unleashed'
+            ufbt-version: 'prerelease'
+            sdk-channel: 'dev'
+            index-url: https://up.unleashedflip.com/directory.json
 
     name: "ufbt: ${{ matrix.name }}"
     steps:
@@ -24,6 +28,7 @@ jobs:
         with:
           ufbt-version: ${{ matrix.ufbt-version }}
           sdk-channel: ${{ matrix.sdk-channel }}
+          index-url: ${{ matrix.index-url }}
 
       - name: Upload app artifacts
         uses: actions/upload-artifact@v3
