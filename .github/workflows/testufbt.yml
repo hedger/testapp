@@ -6,7 +6,7 @@ on:
 jobs:
   run-test-on-latest:
     name: Test ufbt action with dev SDK
-    uses: hedger/flipperzero-ufbt-action/.github/workflows/test_ufbt.yml
+    uses: hedger/flipperzero-ufbt-action/.github/workflows/test_ufbt.yml@dev
     with:
       ufbt-version: prerelease
       sdk-channel: dev
