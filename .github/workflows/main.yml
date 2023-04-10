@@ -7,13 +7,10 @@ jobs:
       matrix:
         include:
           - name: 'Build for dev channel'
-            ufbt-version: 'prerelease'
             sdk-channel: 'dev'
           - name: 'Build for release'
-            ufbt-version: 'prerelease'
             sdk-channel: 'rc'
           - name: 'Build for Unleashed'
-            ufbt-version: 'prerelease'
             sdk-channel: 'dev'
             sdk-index-url: https://up.unleashedflip.com/directory.json
 
@@ -26,9 +23,9 @@ jobs:
         uses: hedger/flipperzero-ufbt-action@dev
         id: build-app
         with:
-          ufbt-version: ${{ matrix.ufbt-version }}
+          ufbt-version: 'prerelease'
           sdk-channel: ${{ matrix.sdk-channel }}
-          index-url: ${{ matrix.index-url }}
+          isdk-ndex-url: ${{ matrix.sdk-index-url }}
 
       - name: Upload app artifacts
         uses: actions/upload-artifact@v3
