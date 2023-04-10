@@ -1,6 +1,6 @@
-on: [push]
-
 name: "FAP: Build for multiple SDK sources"
+
+on: [push]
 
 jobs:
   test_ubt_build_action:

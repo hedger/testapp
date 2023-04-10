@@ -1,6 +1,6 @@
-on: [push]
-
 name: "FAP: Build and lint"
+
+on: [push]
 
 jobs:
   test_ubt_build_action:
