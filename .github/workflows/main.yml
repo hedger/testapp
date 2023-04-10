@@ -25,7 +25,7 @@ jobs:
         with:
           ufbt-version: 'prerelease'
           sdk-channel: ${{ matrix.sdk-channel }}
-          isdk-ndex-url: ${{ matrix.sdk-index-url }}
+          sdk-ndex-url: ${{ matrix.sdk-index-url }}
 
       - name: Upload app artifacts
         uses: actions/upload-artifact@v3
