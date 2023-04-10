@@ -1,6 +1,6 @@
 on: [push]
 
-name: Build for multiple SDK sources
+name: "FAP: Build for multiple SDK sources"
 
 jobs:
   test_ubt_build_action:
@@ -16,7 +16,7 @@ jobs:
             sdk-channel: dev
             sdk-index-url: https://up.unleashedflip.com/directory.json
 
-    name: ufbt: Build for ${{ matrix.name }}
+    name: 'ufbt: Build for ${{ matrix.name }}'
     steps:
       - name: Checkout
         uses: actions/checkout@v3

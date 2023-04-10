@@ -1,11 +1,11 @@
 on: [push]
 
-name: Build and lint 
+name: "FAP: Build and lint"
 
 jobs:
   test_ubt_build_action:
     runs-on: ubuntu-latest
-    name: ufbt: Build for Dev branch
+    name: 'ufbt: Build for Dev branch'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
